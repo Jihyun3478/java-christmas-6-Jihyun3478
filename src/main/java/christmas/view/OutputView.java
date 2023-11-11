@@ -1,6 +1,7 @@
 package christmas.view;
 
 import static christmas.view.constant.ErrorMessage.DATE_FORMAT_ERROR_MESSAGE;
+import static christmas.view.constant.ErrorMessage.MENU_FORMAT_ERROR_MESSAGE;
 import static christmas.view.constant.OutputMessage.INTRODUCE_MESSAGE;
 
 public class OutputView {
@@ -11,5 +12,9 @@ public class OutputView {
 
     public void printDateErrorMessage() {
         System.out.println(DATE_FORMAT_ERROR_MESSAGE.getMessage());
+    }
+
+    public void printMenuErrorMessage() {
+        System.out.println(MENU_FORMAT_ERROR_MESSAGE.getMessage());
     }
 }
