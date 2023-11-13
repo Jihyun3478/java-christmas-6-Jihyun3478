@@ -1,5 +1,6 @@
 package christmas.domain;
 
+import org.junit.jupiter.api.Assertions;
 import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Test;
 
@@ -7,6 +8,7 @@ import java.util.HashMap;
 import java.util.Map;
 
 import static org.assertj.core.api.AssertionsForClassTypes.assertThatThrownBy;
+import static org.junit.jupiter.api.Assertions.assertEquals;
 
 class OrderMenuTest {
 
@@ -48,5 +50,17 @@ class OrderMenuTest {
 
         assertThatThrownBy(() -> new OrderMenu(orderMenu))
                 .isInstanceOf(IllegalArgumentException.class);
+    }
+
+    @Test
+    @DisplayName("할인 전 총 주문 금액이 일치하는지 확인한다.")
+    void checkBeforeDiscountPrice() {
+        Map<String, Integer> order = new HashMap<>();
+        order.put("해산물파스타", 2);
+
+        OrderMenu orderMenu = new OrderMenu(order);
+        int totalPrice = OrderMenu.getTotalPrice(orderMenu);
+
+        assertEquals(totalPrice, 70000);
     }
 }
