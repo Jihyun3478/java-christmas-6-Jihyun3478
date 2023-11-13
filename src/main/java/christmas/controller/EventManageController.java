@@ -2,18 +2,19 @@ package christmas.controller;
 
 import christmas.domain.Date;
 import christmas.domain.OrderMenu;
+import christmas.service.EventManageService;
 import christmas.view.InputView;
 import christmas.view.OutputView;
-
-import java.util.Map;
 
 public class EventManageController {
     private final InputView inputView;
     private final OutputView outputView;
+    private final EventManageService eventManageService;
 
     public EventManageController() {
         inputView = new InputView();
         outputView = new OutputView();
+        eventManageService = new EventManageService();
     }
 
     public void startEventPlanner() {

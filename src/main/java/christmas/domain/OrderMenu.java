@@ -1,20 +1,18 @@
 package christmas.domain;
 
-import java.util.HashMap;
 import java.util.Map;
 
 public class OrderMenu {
-    private final Map<MenuDetail, Integer> orderMenu;
+    private final Map<String, Integer> orderMenu;
 
-    public OrderMenu(Map<String, Integer> input) {
-        orderMenu = new HashMap<>();
-        checkAll(input);
+    public OrderMenu(Map<String, Integer> orderMenu) {
+        this.orderMenu = orderMenu;
+        checkAll(orderMenu);
     }
 
     private void checkAll(Map<String, Integer> input) {
         checkIsNotContainedMenu(input);
         checkCountLessOne(input);
-        checkOrderDuplicate(input);
         checkOrderOnlyBeverage(input);
         checkCountOverTwentyOne(input);
     }
@@ -35,17 +33,9 @@ public class OrderMenu {
         }
     }
 
-    private void checkOrderDuplicate(Map<String, Integer> input) {
-        for(String s : input.keySet()) {
-            if(input.containsKey(s)) {
-                throw new IllegalArgumentException();
-            }
-        }
-    }
-
     private void checkOrderOnlyBeverage(Map<String, Integer> input) {
         for(String s : input.keySet()) {
-            if(s.equals(Menu.BEVERAGE.getType())) {
+            if(Menu.isOnlyBeverage(s)) {
                 throw new IllegalArgumentException();
             }
         }

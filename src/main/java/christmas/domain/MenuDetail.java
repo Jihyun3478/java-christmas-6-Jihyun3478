@@ -33,7 +33,7 @@ public enum MenuDetail {
     }
 
     public static boolean isContain(String menu) {
-        return Arrays.stream(MenuDetail.values())
+        return Arrays.stream(values())
                 .anyMatch(m -> Objects.equals(m.getName(), menu));
     }
 }

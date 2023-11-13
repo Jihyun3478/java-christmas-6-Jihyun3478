@@ -20,7 +20,8 @@ public enum Menu {
         this.menu = menu;
     }
 
-    public String getType() {
-        return type;
+    public static boolean isOnlyBeverage(String menu) {
+        return BEVERAGE.menu.stream()
+                .anyMatch(m -> Objects.equals(m.getName(), menu));
     }
 }
