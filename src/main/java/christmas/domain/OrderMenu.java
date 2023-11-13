@@ -1,6 +1,7 @@
 package christmas.domain;
 
 import java.util.Map;
+import java.util.Set;
 
 import static christmas.view.constant.Constant.*;
 
@@ -16,14 +17,19 @@ public class OrderMenu {
         return orderMenu.size();
     }
 
+
     public static int getTotalPrice(OrderMenu orderMenu) {
         int totalPrice = 0;
-        for(Map.Entry<String, Integer> orders : orderMenu.orderMenu.entrySet()) {
+        for(Map.Entry<String, Integer> orders : getEntrySet(orderMenu)) {
             int price = MenuDetail.getPrice(orders.getKey());
             int count = orders.getValue();
             totalPrice += calculateTotalPrice(price, count);
         }
         return totalPrice;
+    }
+
+    public static Set<Map.Entry<String, Integer>> getEntrySet(OrderMenu orderMenu) {
+        return orderMenu.orderMenu.entrySet();
     }
 
     public static boolean isContainFreeGift(int totalPrice) {

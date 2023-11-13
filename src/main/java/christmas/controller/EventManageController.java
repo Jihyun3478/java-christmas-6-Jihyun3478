@@ -1,9 +1,6 @@
 package christmas.controller;
 
-import christmas.domain.ChristmasEvent;
-import christmas.domain.Date;
-import christmas.domain.TotalDiscount;
-import christmas.domain.OrderMenu;
+import christmas.domain.*;
 import christmas.service.EventManageService;
 import christmas.view.InputView;
 import christmas.view.OutputView;
@@ -33,6 +30,8 @@ public class EventManageController {
         if(TotalDiscount.isEventCondition(totalPrice)) {
             ChristmasEvent christmasEvent = new ChristmasEvent(date);
             printChristmasEvent(christmasEvent);
+            DayEvent dayEvent = new DayEvent(orderMenu, date);
+            printDayEvent(date, dayEvent);
         }
 
         if(!TotalDiscount.isEventCondition(totalPrice)) {
@@ -78,5 +77,12 @@ public class EventManageController {
     private void printChristmasEvent(ChristmasEvent christmasEvent) {
         int discount = christmasEvent.getDiscount();
         outputView.printChristmasEvent(discount);
+    }
+
+    private void printDayEvent(Date date, DayEvent dayEvent) {
+        int discount = dayEvent.getDiscount();
+        if(!(discount == 0)) {
+            outputView.printDayEvent(date, discount);
+        }
     }
 }
