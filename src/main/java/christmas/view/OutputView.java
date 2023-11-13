@@ -1,6 +1,7 @@
 package christmas.view;
 
 import java.text.DecimalFormat;
+import java.util.List;
 
 import static christmas.view.constant.Constant.WON;
 import static christmas.view.constant.ErrorMessage.DATE_FORMAT_ERROR_MESSAGE;
@@ -24,6 +25,16 @@ public class OutputView {
     public void printTotalPrice(int totalPrice) {
         System.out.println(TOTAL_PRICE_MESSAGE.getMessage());
         System.out.println(moneyFormat.format(totalPrice) + WON);
+    }
+
+    public void printFreeGift(boolean freeGift) {
+        System.out.println(FREE_GIFT_MESSAGE.getMessage());
+        if(freeGift) {
+            System.out.println(CHAMPAGNE_MESSAGE.getMessage());
+        }
+        if(!freeGift) {
+            System.out.println(NONE.getMessage());
+        }
     }
 
     public void printDateErrorMessage() {

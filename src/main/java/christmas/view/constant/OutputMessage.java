@@ -5,7 +5,10 @@ public enum OutputMessage {
 
     MENU_CHECK_MESSAGE("\n<주문 메뉴>"),
 
-    TOTAL_PRICE_MESSAGE("\n<할인 전 총주문 금액>");
+    TOTAL_PRICE_MESSAGE("\n<할인 전 총주문 금액>"),
+    FREE_GIFT_MESSAGE("\n<증정 메뉴>"),
+    CHAMPAGNE_MESSAGE("샴페인 1개"),
+    NONE("없음");
 
     private final String message;
 

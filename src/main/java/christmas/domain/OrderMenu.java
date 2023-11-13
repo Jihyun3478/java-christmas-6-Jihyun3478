@@ -2,8 +2,7 @@ package christmas.domain;
 
 import java.util.Map;
 
-import static christmas.view.constant.Constant.BLANK;
-import static christmas.view.constant.Constant.COUNT;
+import static christmas.view.constant.Constant.*;
 
 public class OrderMenu {
     private final Map<String, Integer> orderMenu;
@@ -25,6 +24,10 @@ public class OrderMenu {
             totalPrice += calculateTotalPrice(price, count);
         }
         return totalPrice;
+    }
+
+    public static boolean isContainFreeGift(int totalPrice) {
+        return totalPrice >= FREE_GIFT_CONDITION;
     }
 
     private static int calculateTotalPrice(int price, int count) {

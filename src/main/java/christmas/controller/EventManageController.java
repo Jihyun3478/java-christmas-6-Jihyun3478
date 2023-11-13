@@ -1,10 +1,14 @@
 package christmas.controller;
 
+import christmas.domain.ChristmasEvent;
 import christmas.domain.Date;
+import christmas.domain.TotalDiscount;
 import christmas.domain.OrderMenu;
 import christmas.service.EventManageService;
 import christmas.view.InputView;
 import christmas.view.OutputView;
+
+import java.util.List;
 
 public class EventManageController {
     private final InputView inputView;
@@ -22,7 +26,8 @@ public class EventManageController {
         Date date = getDate();
         OrderMenu orderMenu = getOrderMenu();
         printOrderMenu(orderMenu);
-        printTotalPrice(orderMenu);
+        int totalPrice = printTotalPrice(orderMenu);
+        printFreeGift(totalPrice);
     }
 
     private Date getDate() {
@@ -48,8 +53,15 @@ public class EventManageController {
         outputView.printOrderMenu(order);
     }
 
-    private void printTotalPrice(OrderMenu orderMenu) {
+    private int printTotalPrice(OrderMenu orderMenu) {
         int totalPrice = OrderMenu.getTotalPrice(orderMenu);
         outputView.printTotalPrice(totalPrice);
+
+        return totalPrice;
+    }
+
+    private void printFreeGift(int totalPrice) {
+        boolean isContainFreeGift = OrderMenu.isContainFreeGift(totalPrice);
+        outputView.printFreeGift(isContainFreeGift);
     }
 }
