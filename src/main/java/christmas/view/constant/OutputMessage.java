@@ -10,6 +10,8 @@ public enum OutputMessage {
     CHAMPAGNE_MESSAGE("샴페인 1개"),
     EVENT_DETAIL_MESSAGE("\n<혜택 내역>"),
     CHRISTMAS_DISCOUNT_MESSAGE("크리스마스 디데이 할인: -"),
+    WEEK_DISCOUNT_MESSAGE("평일 할인: -"),
+    WEEKEND_DISCOUNT_MESSAGE("주말 할인: -"),
     NONE("없음");
 
     private final String message;

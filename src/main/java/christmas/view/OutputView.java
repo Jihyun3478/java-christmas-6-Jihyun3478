@@ -1,5 +1,7 @@
 package christmas.view;
 
+import christmas.domain.Date;
+
 import java.text.DecimalFormat;
 
 import static christmas.view.constant.Constant.WON;
@@ -42,6 +44,15 @@ public class OutputView {
 
     public void printChristmasEvent(int discount) {
         System.out.println(CHRISTMAS_DISCOUNT_MESSAGE.getMessage() + moneyFormat.format(discount) + WON);
+    }
+
+    public void printDayEvent(Date date, int discount) {
+        if(date.isWeekend()) {
+            System.out.println(WEEK_DISCOUNT_MESSAGE.getMessage() + moneyFormat.format(discount) + WON);
+        }
+        if(!date.isWeekend()) {
+            System.out.println(WEEKEND_DISCOUNT_MESSAGE.getMessage() + moneyFormat.format(discount) + WON);
+        }
     }
 
     public void printDateErrorMessage() {

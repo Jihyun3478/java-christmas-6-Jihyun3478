@@ -21,6 +21,10 @@ public class Date {
         return this.date <= 25;
     }
 
+    public boolean isWeekend() {
+        return this.date % 7 == 1 || this.date % 7 == 2;
+    }
+
     public int getDate() {
         return date;
     }

@@ -22,12 +22,12 @@ public enum Menu {
                 .anyMatch(m -> Objects.equals(m.getName(), menu));
     }
 
-    private static boolean isMainMenu(String menu) {
+    public static boolean isMainMenu(String menu) {
         return MAIN_MENU.menu.stream()
                 .anyMatch(m -> Objects.equals(m.getName(), menu));
     }
 
-    private static boolean isDessert(String menu) {
+    public static boolean isDessert(String menu) {
         return DESSERT.menu.stream()
                 .anyMatch(m -> Objects.equals(m.getName(), menu));
     }

@@ -12,4 +12,5 @@ public class Constant {
     public static final int EVENT_CONDITION = 10000;
     public static final int CHRISTMAS_DEFAULT_DISCOUNT = 1000;
     public static final int CHRISTMAS_DISCOUNT = 100;
+    public static final int DAY_DISCOUNT = 2023;
 }
