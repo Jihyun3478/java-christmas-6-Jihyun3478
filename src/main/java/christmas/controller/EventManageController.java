@@ -21,6 +21,7 @@ public class EventManageController {
         outputView.printIntroduce();
         Date date = getDate();
         OrderMenu orderMenu = getOrderMenu();
+        printOrderMenu(orderMenu);
     }
 
     private Date getDate() {
@@ -39,5 +40,10 @@ public class EventManageController {
             outputView.printMenuErrorMessage();
             return getOrderMenu();
         }
+    }
+
+    private void printOrderMenu(OrderMenu orderMenu) {
+        String[] order = orderMenu.getOrder();
+        outputView.printOrderMenu(order);
     }
 }
