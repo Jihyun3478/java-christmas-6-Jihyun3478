@@ -22,6 +22,7 @@ public class EventManageController {
         Date date = getDate();
         OrderMenu orderMenu = getOrderMenu();
         printOrderMenu(orderMenu);
+        printTotalPrice(orderMenu);
     }
 
     private Date getDate() {
@@ -45,5 +46,10 @@ public class EventManageController {
     private void printOrderMenu(OrderMenu orderMenu) {
         String[] order = orderMenu.getOrder();
         outputView.printOrderMenu(order);
+    }
+
+    private void printTotalPrice(OrderMenu orderMenu) {
+        int totalPrice = OrderMenu.getTotalPrice(orderMenu);
+        outputView.printTotalPrice(totalPrice);
     }
 }

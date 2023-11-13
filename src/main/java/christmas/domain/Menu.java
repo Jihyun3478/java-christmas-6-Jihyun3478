@@ -17,10 +17,6 @@ public enum Menu {
         this.menu = menu;
     }
 
-//    private String getName() {
-//        return BEVERAGE.menu.stream().filter(m -> m.getName()).;
-//    }
-
     private static boolean isAppetizer(String menu) {
         return APPETIZER.menu.stream()
                 .anyMatch(m -> Objects.equals(m.getName(), menu));

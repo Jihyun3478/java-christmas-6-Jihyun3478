@@ -17,6 +17,20 @@ public class OrderMenu {
         return orderMenu.size();
     }
 
+    public static int getTotalPrice(OrderMenu orderMenu) {
+        int totalPrice = 0;
+        for(Map.Entry<String, Integer> orders : orderMenu.orderMenu.entrySet()) {
+            int price = MenuDetail.getPrice(orders.getKey());
+            int count = orders.getValue();
+            totalPrice += calculateTotalPrice(price, count);
+        }
+        return totalPrice;
+    }
+
+    private static int calculateTotalPrice(int price, int count) {
+        return price * count;
+    }
+
     public String[] getOrder() {
         String[] result = new String[orderMenu.size()];
         int index = 0;
