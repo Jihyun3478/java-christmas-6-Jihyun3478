@@ -1,9 +1,6 @@
 package christmas.domain;
 
-import java.util.Arrays;
-import java.util.Collections;
-import java.util.List;
-import java.util.Objects;
+import java.util.*;
 
 public enum Menu {
     APPETIZER("에피타이저", Arrays.asList(MenuDetail.MUSHROOM_SOUP, MenuDetail.TAPAS, MenuDetail.CAESAR_SALAD)),
@@ -20,8 +17,41 @@ public enum Menu {
         this.menu = menu;
     }
 
-    public static boolean isOnlyBeverage(String menu) {
-        return BEVERAGE.menu.stream()
+//    private String getName() {
+//        return BEVERAGE.menu.stream().filter(m -> m.getName()).;
+//    }
+
+    private static boolean isAppetizer(String menu) {
+        return APPETIZER.menu.stream()
                 .anyMatch(m -> Objects.equals(m.getName(), menu));
+    }
+
+    private static boolean isMainMenu(String menu) {
+        return MAIN_MENU.menu.stream()
+                .anyMatch(m -> Objects.equals(m.getName(), menu));
+    }
+
+    private static boolean isDessert(String menu) {
+        return DESSERT.menu.stream()
+                .anyMatch(m -> Objects.equals(m.getName(), menu));
+    }
+
+    public static boolean isFood(String menu) {
+        return isAppetizer(menu) || isMainMenu(menu) || isDessert(menu);
+    }
+
+    public static boolean isContainFood(Map<String, Integer> input) {
+        boolean isContain = false;
+        for(String menu : input.keySet()) {
+            if (isFood(menu)) {
+                isContain = true;
+                break;
+            }
+        }
+        return isContain;
+    }
+
+    public static boolean isOnlyBeverage(Map<String, Integer> input) {
+        return !isContainFood(input);
     }
 }

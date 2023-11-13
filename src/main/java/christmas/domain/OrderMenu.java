@@ -2,12 +2,30 @@ package christmas.domain;
 
 import java.util.Map;
 
+import static christmas.view.constant.Constant.BLANK;
+import static christmas.view.constant.Constant.COUNT;
+
 public class OrderMenu {
     private final Map<String, Integer> orderMenu;
 
     public OrderMenu(Map<String, Integer> orderMenu) {
         this.orderMenu = orderMenu;
         checkAll(orderMenu);
+    }
+
+    public int size() {
+        return orderMenu.size();
+    }
+
+    public String[] getOrder() {
+        String[] result = new String[orderMenu.size()];
+        int index = 0;
+        for(Map.Entry<String, Integer> orders : orderMenu.entrySet()) {
+            String order = orders.getKey() + BLANK + orders.getValue() + COUNT;
+            result[index] = order;
+            index++;
+        }
+        return result;
     }
 
     private void checkAll(Map<String, Integer> input) {
@@ -34,10 +52,8 @@ public class OrderMenu {
     }
 
     private void checkOrderOnlyBeverage(Map<String, Integer> input) {
-        for(String s : input.keySet()) {
-            if(Menu.isOnlyBeverage(s)) {
-                throw new IllegalArgumentException();
-            }
+        if (Menu.isOnlyBeverage(input)) {
+            throw new IllegalArgumentException();
         }
     }
 
