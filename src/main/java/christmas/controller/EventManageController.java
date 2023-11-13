@@ -28,6 +28,16 @@ public class EventManageController {
         printOrderMenu(orderMenu);
         int totalPrice = printTotalPrice(orderMenu);
         printFreeGift(totalPrice);
+
+        outputView.printEventDetail();
+        if(TotalDiscount.isEventCondition(totalPrice)) {
+            ChristmasEvent christmasEvent = new ChristmasEvent(date);
+            printChristmasEvent(christmasEvent);
+        }
+
+        if(!TotalDiscount.isEventCondition(totalPrice)) {
+            outputView.printNone();
+        }
     }
 
     private Date getDate() {
@@ -63,5 +73,10 @@ public class EventManageController {
     private void printFreeGift(int totalPrice) {
         boolean isContainFreeGift = OrderMenu.isContainFreeGift(totalPrice);
         outputView.printFreeGift(isContainFreeGift);
+    }
+
+    private void printChristmasEvent(ChristmasEvent christmasEvent) {
+        int discount = christmasEvent.getDiscount();
+        outputView.printChristmasEvent(discount);
     }
 }
