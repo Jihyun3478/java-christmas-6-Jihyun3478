@@ -59,6 +59,15 @@ public class OutputView {
         System.out.println(SPECIAL_DISCOUNT_MESSAGE.getMessage() + moneyFormat.format(discount) + WON);
     }
 
+    public void printFreeGiftEvent(int count, boolean isContainFreeGift) {
+        if(isContainFreeGift) {
+            System.out.println(FREE_GIFT_DISCOUNT_MESSAGE.getMessage() + moneyFormat.format(count) + WON);
+        }
+        if(!isContainFreeGift) {
+            System.out.println(FREE_GIFT_DISCOUNT_MESSAGE.getMessage() + NONE);
+        }
+    }
+
     public void printDateErrorMessage() {
         System.out.println(DATE_FORMAT_ERROR_MESSAGE.getMessage());
     }

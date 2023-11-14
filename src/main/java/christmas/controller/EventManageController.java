@@ -34,6 +34,9 @@ public class EventManageController {
             printDayEvent(date, dayEvent);
             SpecialEvent specialEvent = new SpecialEvent(date);
             printSpecialEvent(specialEvent);
+
+            FreeGiftEvent freeGiftEvent = new FreeGiftEvent(totalPrice);
+            printFreeGiftEvent(freeGiftEvent, totalPrice);
         }
     }
 
@@ -88,6 +91,14 @@ public class EventManageController {
         int discount = specialEvent.getDiscount();
         if(!(discount == 0)) {
             outputView.printSpecialEvent(discount);
+        }
+    }
+
+    private void printFreeGiftEvent(FreeGiftEvent freeGiftEvent, int totalPrice) {
+        int count = freeGiftEvent.getDiscount(totalPrice);
+        boolean isContainFreeGift = FreeGiftEvent.isContainFreeGift(totalPrice);
+        if(isContainFreeGift) {
+            outputView.printFreeGiftEvent(count, isContainFreeGift);
         }
     }
 }
