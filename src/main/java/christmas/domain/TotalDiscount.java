@@ -20,8 +20,4 @@ public class TotalDiscount {
     public int calculateTotalDiscount(ChristmasEvent christmasEvent, DayEvent dayEvent, SpecialEvent specialEvent, FreeGiftEvent freeGiftEvent, int totalPrice) {
         return christmasEvent.getDiscount() + dayEvent.getDiscount() + specialEvent.getDiscount() + freeGiftEvent.getDiscount(totalPrice);
     }
-
-    public static boolean isTotalDiscountZero(int totalDiscount) {
-        return totalDiscount == 0;
-    }
 }
