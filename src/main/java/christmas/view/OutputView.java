@@ -76,6 +76,9 @@ public class OutputView {
         System.out.println(TOTAL_DISCOUNT_PRICE_MESSAGE.getMessage() + moneyFormat.format(totalDiscountPrice) + WON);
     }
 
+    public void printBadge(String badgeDetail) {
+        System.out.println(BADGE_MESSAGE.getMessage() + badgeDetail);
+    }
 
     public void printDateErrorMessage() {
         System.out.println(DATE_FORMAT_ERROR_MESSAGE.getMessage());
