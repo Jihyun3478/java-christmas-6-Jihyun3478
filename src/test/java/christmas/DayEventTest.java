@@ -1,5 +1,8 @@
-package christmas.domain;
+package christmas;
 
+import christmas.domain.Date;
+import christmas.domain.DayEvent;
+import christmas.domain.OrderMenu;
 import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.params.ParameterizedTest;
 import org.junit.jupiter.params.provider.ValueSource;
