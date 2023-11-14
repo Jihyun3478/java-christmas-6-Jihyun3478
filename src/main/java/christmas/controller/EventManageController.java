@@ -53,6 +53,10 @@ public class EventManageController {
 
         int TotalDiscountPrice = totalPrice - totalDiscount + FREE_GIFT_DISCOUNT;
         outputView.printTotalDiscountPrice(TotalDiscountPrice);
+
+        Badge badge = new Badge(totalDiscount);
+        String badgeDetail = badge.giveBadge(totalDiscount);
+        outputView.printBadge(badgeDetail);
     }
 
     private Date getDate() {
