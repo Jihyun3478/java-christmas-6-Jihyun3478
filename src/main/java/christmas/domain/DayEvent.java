@@ -8,14 +8,14 @@ public class DayEvent {
     private final int discount;
 
     public DayEvent(OrderMenu orderMenu, Date date) {
-        this.discount = weekOrWeekend(orderMenu, date);
+        this.discount = checkWeekOrWeekend(orderMenu, date);
     }
 
     public int getDiscount() {
         return discount;
     }
 
-    private int weekOrWeekend(OrderMenu orderMenu, Date date) {
+    private int checkWeekOrWeekend(OrderMenu orderMenu, Date date) {
         int discount = 0;
         if(!date.isWeekend()) {
             discount = applyWeekEvent(orderMenu);
