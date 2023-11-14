@@ -1,19 +1,16 @@
 package christmas.controller;
 
 import christmas.domain.*;
-import christmas.service.EventManageService;
 import christmas.view.InputView;
 import christmas.view.OutputView;
 
 public class EventManageController {
     private final InputView inputView;
     private final OutputView outputView;
-    private final EventManageService eventManageService;
 
     public EventManageController() {
         inputView = new InputView();
         outputView = new OutputView();
-        eventManageService = new EventManageService();
     }
 
     public void startEventPlanner() {
@@ -26,11 +23,7 @@ public class EventManageController {
 
         outputView.printEventDetail();
         if(TotalDiscount.isEventCondition(totalPrice)) {
-            ChristmasEvent christmasEvent = getChristmasEvent(date);
-            DayEvent dayEvent = getDayEvent(date, orderMenu);
-            SpecialEvent specialEvent = getSpecialEvent(date);
-            FreeGiftEvent freeGiftEvent = getFreeGiftEvent(totalPrice);
-            TotalDiscount total = new TotalDiscount(christmasEvent, dayEvent, specialEvent, freeGiftEvent, totalPrice);
+            manageEvent(date, orderMenu, totalPrice);
         }
 
         if(!TotalDiscount.isEventCondition(totalPrice)) {
@@ -43,9 +36,33 @@ public class EventManageController {
         int totalDiscountPrice = FreeGiftEvent.getTotalDiscountPrice(totalPrice, totalDiscount);
         outputView.printTotalDiscountPrice(totalDiscountPrice);
 
-        Badge badge = new Badge(totalDiscount);
-        String badgeDetail = badge.giveBadge(totalDiscount);
+        String badgeDetail = getBadge(totalDiscount);
         outputView.printBadge(badgeDetail);
+    }
+
+    private Date getDate() {
+        try {
+            return new Date(inputView.readDate());
+        } catch (IllegalArgumentException exception) {
+            outputView.printDateErrorMessage();
+            return getDate();
+        }
+    }
+
+    private OrderMenu getOrderMenu() {
+        try {
+            return new OrderMenu(inputView.readOrderMenu());
+        } catch (IllegalArgumentException exception) {
+            outputView.printMenuErrorMessage();
+            return getOrderMenu();
+        }
+    }
+    private void manageEvent(Date date, OrderMenu orderMenu, int totalPrice) {
+        ChristmasEvent christmasEvent = getChristmasEvent(date);
+        DayEvent dayEvent = getDayEvent(date, orderMenu);
+        SpecialEvent specialEvent = getSpecialEvent(date);
+        FreeGiftEvent freeGiftEvent = getFreeGiftEvent(totalPrice);
+        TotalDiscount total = new TotalDiscount(christmasEvent, dayEvent, specialEvent, freeGiftEvent, totalPrice);
     }
 
     private ChristmasEvent getChristmasEvent(Date date) {
@@ -87,22 +104,9 @@ public class EventManageController {
         return freeGiftEvent;
     }
 
-    private Date getDate() {
-        try {
-            return new Date(inputView.readDate());
-        } catch (IllegalArgumentException exception) {
-            outputView.printDateErrorMessage();
-            return getDate();
-        }
-    }
-
-    private OrderMenu getOrderMenu() {
-        try {
-            return new OrderMenu(inputView.readOrderMenu());
-        } catch (IllegalArgumentException exception) {
-            outputView.printMenuErrorMessage();
-            return getOrderMenu();
-        }
+    private static String getBadge(int totalDiscount) {
+        Badge badge = new Badge(totalDiscount);
+        return badge.giveBadge(totalDiscount);
     }
 
     private void printOrderMenu(OrderMenu orderMenu) {
