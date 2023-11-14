@@ -40,13 +40,24 @@ public class EventManageController {
 
             TotalDiscount total = new TotalDiscount(christmasEvent, dayEvent, specialEvent, freeGiftEvent, totalPrice);
         }
-        outputView.printNotExistEvent();
+
+        if(!TotalDiscount.isEventCondition(totalPrice)) {
+            outputView.printNotExistEvent();
+        }
 
         int totalDiscount = TotalDiscount.getDiscount();
         outputView.printTotalDiscount(totalDiscount);
 
-        int TotalDiscountPrice = totalPrice - totalDiscount + FREE_GIFT_DISCOUNT;
-        outputView.printTotalDiscountPrice(TotalDiscountPrice);
+        int totalDiscountPrice = 0;
+        if(FreeGiftEvent.isContainFreeGift(totalPrice)) {
+            totalDiscountPrice = totalPrice - totalDiscount + FREE_GIFT_DISCOUNT;
+            outputView.printTotalDiscountPrice(totalDiscountPrice);
+        }
+
+        if(!FreeGiftEvent.isContainFreeGift(totalPrice)) {
+            totalDiscountPrice = totalPrice - totalDiscount;
+            outputView.printTotalDiscountPrice(totalDiscountPrice);
+        }
 
         Badge badge = new Badge(totalDiscount);
         String badgeDetail = badge.giveBadge(totalDiscount);

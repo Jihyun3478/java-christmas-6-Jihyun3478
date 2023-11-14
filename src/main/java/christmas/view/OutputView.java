@@ -77,7 +77,7 @@ public class OutputView {
             System.out.println(TOTAL_DISCOUNT_MESSAGE.getMessage() + ZERO.getMessage());
         }
         if(totalDiscount != 0) {
-            System.out.println(TOTAL_DISCOUNT_MESSAGE.getMessage() + moneyFormat.format(totalDiscount) + WON);
+            System.out.println(TOTAL_DISCOUNT_MESSAGE.getMessage() + moneyFormat.format(totalDiscount*-1) + WON);
         }
     }
 
