@@ -22,7 +22,7 @@ public class ChristmasEvent {
     }
 
     private int calculateChristmasDiscount(Date date) {
-        int discount = CHRISTMAS_DEFAULT_DISCOUNT;
+        int discount = DEFAULT_DISCOUNT;
         int theDate = date.getDate();
         for(int i = MIN_NUMBER+1; i <= theDate; i++) {
             discount += CHRISTMAS_DISCOUNT;
