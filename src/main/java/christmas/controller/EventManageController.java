@@ -5,8 +5,6 @@ import christmas.service.EventManageService;
 import christmas.view.InputView;
 import christmas.view.OutputView;
 
-import static christmas.view.constant.Constant.FREE_GIFT_DISCOUNT;
-
 public class EventManageController {
     private final InputView inputView;
     private final OutputView outputView;
@@ -52,25 +50,40 @@ public class EventManageController {
 
     private ChristmasEvent getChristmasEvent(Date date) {
         ChristmasEvent christmasEvent = new ChristmasEvent(date);
-        printChristmasEvent(christmasEvent);
+        int discount = christmasEvent.getDiscount();
+
+        outputView.printChristmasEvent(discount);
         return christmasEvent;
     }
 
     private DayEvent getDayEvent(Date date, OrderMenu orderMenu) {
         DayEvent dayEvent = new DayEvent(orderMenu, date);
-        printDayEvent(date, dayEvent);
+        int discount = dayEvent.getDiscount();
+
+        if(!(discount == 0)) {
+            outputView.printDayEvent(date, discount);
+        }
         return dayEvent;
     }
 
     private SpecialEvent getSpecialEvent(Date date) {
         SpecialEvent specialEvent = new SpecialEvent(date);
-        printSpecialEvent(specialEvent);
+        int discount = specialEvent.getDiscount();
+
+        if(!(discount == 0)) {
+            outputView.printSpecialEvent(discount);
+        }
         return specialEvent;
     }
 
     private FreeGiftEvent getFreeGiftEvent(int totalPrice) {
         FreeGiftEvent freeGiftEvent = new FreeGiftEvent(totalPrice);
-        printFreeGiftEvent(freeGiftEvent, totalPrice);
+        int count = freeGiftEvent.getDiscount(totalPrice);
+        boolean isContainFreeGift = FreeGiftEvent.isContainFreeGift(totalPrice);
+
+        if(isContainFreeGift) {
+            outputView.printFreeGiftEvent(count, isContainFreeGift);
+        }
         return freeGiftEvent;
     }
 
@@ -107,32 +120,5 @@ public class EventManageController {
     private void printFreeGift(int totalPrice) {
         boolean isContainFreeGift = FreeGiftEvent.isContainFreeGift(totalPrice);
         outputView.printFreeGift(isContainFreeGift);
-    }
-
-    private void printChristmasEvent(ChristmasEvent christmasEvent) {
-        int discount = christmasEvent.getDiscount();
-        outputView.printChristmasEvent(discount);
-    }
-
-    private void printDayEvent(Date date, DayEvent dayEvent) {
-        int discount = dayEvent.getDiscount();
-        if(!(discount == 0)) {
-            outputView.printDayEvent(date, discount);
-        }
-    }
-
-    private void printSpecialEvent(SpecialEvent specialEvent) {
-        int discount = specialEvent.getDiscount();
-        if(!(discount == 0)) {
-            outputView.printSpecialEvent(discount);
-        }
-    }
-
-    private void printFreeGiftEvent(FreeGiftEvent freeGiftEvent, int totalPrice) {
-        int count = freeGiftEvent.getDiscount(totalPrice);
-        boolean isContainFreeGift = FreeGiftEvent.isContainFreeGift(totalPrice);
-        if(isContainFreeGift) {
-            outputView.printFreeGiftEvent(count, isContainFreeGift);
-        }
     }
 }
