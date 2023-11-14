@@ -28,16 +28,10 @@ public class EventManageController {
 
         outputView.printEventDetail();
         if(TotalDiscount.isEventCondition(totalPrice)) {
-            ChristmasEvent christmasEvent = new ChristmasEvent(date);
-            printChristmasEvent(christmasEvent);
-            DayEvent dayEvent = new DayEvent(orderMenu, date);
-            printDayEvent(date, dayEvent);
-            SpecialEvent specialEvent = new SpecialEvent(date);
-            printSpecialEvent(specialEvent);
-
-            FreeGiftEvent freeGiftEvent = new FreeGiftEvent(totalPrice);
-            printFreeGiftEvent(freeGiftEvent, totalPrice);
-
+            ChristmasEvent christmasEvent = getChristmasEvent(date);
+            DayEvent dayEvent = getDayEvent(date, orderMenu);
+            SpecialEvent specialEvent = getSpecialEvent(date);
+            FreeGiftEvent freeGiftEvent = getFreeGiftEvent(totalPrice);
             TotalDiscount total = new TotalDiscount(christmasEvent, dayEvent, specialEvent, freeGiftEvent, totalPrice);
         }
 
@@ -48,20 +42,36 @@ public class EventManageController {
         int totalDiscount = TotalDiscount.getDiscount();
         outputView.printTotalDiscount(totalDiscount);
 
-        int totalDiscountPrice = 0;
-        if(FreeGiftEvent.isContainFreeGift(totalPrice)) {
-            totalDiscountPrice = totalPrice - totalDiscount + FREE_GIFT_DISCOUNT;
-            outputView.printTotalDiscountPrice(totalDiscountPrice);
-        }
-
-        if(!FreeGiftEvent.isContainFreeGift(totalPrice)) {
-            totalDiscountPrice = totalPrice - totalDiscount;
-            outputView.printTotalDiscountPrice(totalDiscountPrice);
-        }
+        int totalDiscountPrice = FreeGiftEvent.getTotalDiscountPrice(totalPrice, totalDiscount);
+        outputView.printTotalDiscountPrice(totalDiscountPrice);
 
         Badge badge = new Badge(totalDiscount);
         String badgeDetail = badge.giveBadge(totalDiscount);
         outputView.printBadge(badgeDetail);
+    }
+
+    private ChristmasEvent getChristmasEvent(Date date) {
+        ChristmasEvent christmasEvent = new ChristmasEvent(date);
+        printChristmasEvent(christmasEvent);
+        return christmasEvent;
+    }
+
+    private DayEvent getDayEvent(Date date, OrderMenu orderMenu) {
+        DayEvent dayEvent = new DayEvent(orderMenu, date);
+        printDayEvent(date, dayEvent);
+        return dayEvent;
+    }
+
+    private SpecialEvent getSpecialEvent(Date date) {
+        SpecialEvent specialEvent = new SpecialEvent(date);
+        printSpecialEvent(specialEvent);
+        return specialEvent;
+    }
+
+    private FreeGiftEvent getFreeGiftEvent(int totalPrice) {
+        FreeGiftEvent freeGiftEvent = new FreeGiftEvent(totalPrice);
+        printFreeGiftEvent(freeGiftEvent, totalPrice);
+        return freeGiftEvent;
     }
 
     private Date getDate() {

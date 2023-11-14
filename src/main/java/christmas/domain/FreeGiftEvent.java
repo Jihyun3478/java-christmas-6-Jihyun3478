@@ -21,4 +21,23 @@ public class FreeGiftEvent {
     public static boolean isContainFreeGift(int totalPrice) {
         return totalPrice >= FREE_GIFT_CONDITION;
     }
+
+    public static int getTotalDiscountPrice(int totalPrice, int totalDiscount) {
+        int totalDiscountPrice = 0;
+        if(isContainFreeGift(totalPrice)) {
+            totalDiscountPrice = withFreeGiftPrice(totalPrice, totalDiscount);
+        }
+        if(!isContainFreeGift(totalPrice)) {
+            totalDiscountPrice = withoutFreeGiftPrice(totalPrice, totalDiscount);
+        }
+        return totalDiscountPrice;
+    }
+
+    private static int withFreeGiftPrice(int totalPrice, int totalDiscount) {
+        return totalPrice - totalDiscount + FREE_GIFT_DISCOUNT;
+    }
+
+    private static int withoutFreeGiftPrice(int totalPrice, int totalDiscount) {
+        return totalPrice - totalDiscount;
+    }
 }
