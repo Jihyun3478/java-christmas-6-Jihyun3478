@@ -68,8 +68,17 @@ public class OutputView {
         }
     }
 
-    public void printTotalDiscount(int count) {
-        System.out.println(TOTAL_DISCOUNT_MESSAGE.getMessage() + moneyFormat.format(count) + WON);
+    public void printNotExistEvent() {
+        System.out.println(NONE.getMessage());
+    }
+
+    public void printTotalDiscount(int totalDiscount) {
+        if(totalDiscount == 0) {
+            System.out.println(TOTAL_DISCOUNT_MESSAGE.getMessage() + ZERO.getMessage());
+        }
+        if(totalDiscount != 0) {
+            System.out.println(TOTAL_DISCOUNT_MESSAGE.getMessage() + moneyFormat.format(totalDiscount) + WON);
+        }
     }
 
     public void printTotalDiscountPrice(int totalDiscountPrice) {
@@ -86,9 +95,5 @@ public class OutputView {
 
     public void printMenuErrorMessage() {
         System.out.println(MENU_FORMAT_ERROR_MESSAGE.getMessage());
-    }
-
-    public void printNone() {
-        System.out.println(NONE.getMessage());
     }
 }

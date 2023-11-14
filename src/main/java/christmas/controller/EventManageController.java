@@ -40,16 +40,10 @@ public class EventManageController {
 
             TotalDiscount total = new TotalDiscount(christmasEvent, dayEvent, specialEvent, freeGiftEvent, totalPrice);
         }
+        outputView.printNotExistEvent();
 
         int totalDiscount = TotalDiscount.getDiscount();
-
-        if(!TotalDiscount.isTotalDiscountZero(totalDiscount)) {
-            outputView.printTotalDiscount(totalDiscount);
-        }
-
-        if(TotalDiscount.isTotalDiscountZero(totalDiscount)) {
-            outputView.printNone();
-        }
+        outputView.printTotalDiscount(totalDiscount);
 
         int TotalDiscountPrice = totalPrice - totalDiscount + FREE_GIFT_DISCOUNT;
         outputView.printTotalDiscountPrice(TotalDiscountPrice);
