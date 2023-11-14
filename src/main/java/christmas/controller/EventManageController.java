@@ -37,6 +37,18 @@ public class EventManageController {
 
             FreeGiftEvent freeGiftEvent = new FreeGiftEvent(totalPrice);
             printFreeGiftEvent(freeGiftEvent, totalPrice);
+
+            TotalDiscount total = new TotalDiscount(christmasEvent, dayEvent, specialEvent, freeGiftEvent, totalPrice);
+        }
+
+        int totalDiscount = TotalDiscount.getDiscount();
+
+        if(!TotalDiscount.isTotalDiscountZero(totalDiscount)) {
+            outputView.printTotalDiscount(totalDiscount);
+        }
+
+        if(TotalDiscount.isTotalDiscountZero(totalDiscount)) {
+            outputView.printNone();
         }
     }
 

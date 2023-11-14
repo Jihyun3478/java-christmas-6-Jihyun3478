@@ -1,18 +1,27 @@
 package christmas.domain;
 
-import java.util.ArrayList;
-import java.util.List;
-
 import static christmas.view.constant.Constant.EVENT_CONDITION;
 
 public class TotalDiscount {
-    private final List<Integer> discount;
+    private static int discount;
 
-    public TotalDiscount() {
-        this.discount = new ArrayList<>();
+    public TotalDiscount(ChristmasEvent christmasEvent, DayEvent dayEvent, SpecialEvent specialEvent, FreeGiftEvent freeGiftEvent, int totalPrice) {
+        discount = calculateTotalDiscount(christmasEvent, dayEvent, specialEvent, freeGiftEvent, totalPrice);
+    }
+
+    public static int getDiscount() {
+        return discount;
     }
 
     public static boolean isEventCondition(int totalPrice) {
         return totalPrice >= EVENT_CONDITION;
+    }
+
+    public int calculateTotalDiscount(ChristmasEvent christmasEvent, DayEvent dayEvent, SpecialEvent specialEvent, FreeGiftEvent freeGiftEvent, int totalPrice) {
+        return christmasEvent.getDiscount() + dayEvent.getDiscount() + specialEvent.getDiscount() + freeGiftEvent.getDiscount(totalPrice);
+    }
+
+    public static boolean isTotalDiscountZero(int totalDiscount) {
+        return totalDiscount == 0;
     }
 }

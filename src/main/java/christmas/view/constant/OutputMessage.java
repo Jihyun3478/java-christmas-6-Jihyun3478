@@ -14,6 +14,7 @@ public enum OutputMessage {
     WEEKEND_DISCOUNT_MESSAGE("주말 할인: -"),
     SPECIAL_DISCOUNT_MESSAGE("특별 할인: -"),
     FREE_GIFT_DISCOUNT_MESSAGE("증정 이벤트: -"),
+    TOTAL_DISCOUNT_MESSAGE("\n<총혜택 금액>\n-"),
     NONE("없음"),
     ZERO("0원");
 
