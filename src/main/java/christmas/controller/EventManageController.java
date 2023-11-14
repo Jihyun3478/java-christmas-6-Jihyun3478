@@ -5,7 +5,7 @@ import christmas.service.EventManageService;
 import christmas.view.InputView;
 import christmas.view.OutputView;
 
-import java.util.List;
+import static christmas.view.constant.Constant.FREE_GIFT_DISCOUNT;
 
 public class EventManageController {
     private final InputView inputView;
@@ -32,10 +32,8 @@ public class EventManageController {
             printChristmasEvent(christmasEvent);
             DayEvent dayEvent = new DayEvent(orderMenu, date);
             printDayEvent(date, dayEvent);
-        }
-
-        if(!TotalDiscount.isEventCondition(totalPrice)) {
-            outputView.printNone();
+            SpecialEvent specialEvent = new SpecialEvent(date);
+            printSpecialEvent(specialEvent);
         }
     }
 
@@ -70,7 +68,7 @@ public class EventManageController {
     }
 
     private void printFreeGift(int totalPrice) {
-        boolean isContainFreeGift = OrderMenu.isContainFreeGift(totalPrice);
+        boolean isContainFreeGift = FreeGiftEvent.isContainFreeGift(totalPrice);
         outputView.printFreeGift(isContainFreeGift);
     }
 
@@ -83,6 +81,13 @@ public class EventManageController {
         int discount = dayEvent.getDiscount();
         if(!(discount == 0)) {
             outputView.printDayEvent(date, discount);
+        }
+    }
+
+    private void printSpecialEvent(SpecialEvent specialEvent) {
+        int discount = specialEvent.getDiscount();
+        if(!(discount == 0)) {
+            outputView.printSpecialEvent(discount);
         }
     }
 }

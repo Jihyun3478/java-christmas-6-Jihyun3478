@@ -12,7 +12,9 @@ public enum OutputMessage {
     CHRISTMAS_DISCOUNT_MESSAGE("크리스마스 디데이 할인: -"),
     WEEK_DISCOUNT_MESSAGE("평일 할인: -"),
     WEEKEND_DISCOUNT_MESSAGE("주말 할인: -"),
-    NONE("없음");
+    SPECIAL_DISCOUNT_MESSAGE("특별 할인: -"),
+    NONE("없음"),
+    ZERO("0원");
 
     private final String message;
 

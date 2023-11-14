@@ -28,12 +28,12 @@ public class OutputView {
         System.out.println(moneyFormat.format(totalPrice) + WON);
     }
 
-    public void printFreeGift(boolean freeGift) {
+    public void printFreeGift(boolean isContainFreeGift) {
         System.out.println(FREE_GIFT_MESSAGE.getMessage());
-        if(freeGift) {
+        if(isContainFreeGift) {
             System.out.println(CHAMPAGNE_MESSAGE.getMessage());
         }
-        if(!freeGift) {
+        if(!isContainFreeGift) {
             System.out.println(NONE.getMessage());
         }
     }
@@ -53,6 +53,10 @@ public class OutputView {
         if(!date.isWeekend()) {
             System.out.println(WEEKEND_DISCOUNT_MESSAGE.getMessage() + moneyFormat.format(discount) + WON);
         }
+    }
+
+    public void printSpecialEvent(int discount) {
+        System.out.println(SPECIAL_DISCOUNT_MESSAGE.getMessage() + moneyFormat.format(discount) + WON);
     }
 
     public void printDateErrorMessage() {
