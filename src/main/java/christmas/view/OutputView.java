@@ -72,6 +72,11 @@ public class OutputView {
         System.out.println(TOTAL_DISCOUNT_MESSAGE.getMessage() + moneyFormat.format(count) + WON);
     }
 
+    public void printTotalDiscountPrice(int totalDiscountPrice) {
+        System.out.println(TOTAL_DISCOUNT_PRICE_MESSAGE.getMessage() + moneyFormat.format(totalDiscountPrice) + WON);
+    }
+
+
     public void printDateErrorMessage() {
         System.out.println(DATE_FORMAT_ERROR_MESSAGE.getMessage());
     }

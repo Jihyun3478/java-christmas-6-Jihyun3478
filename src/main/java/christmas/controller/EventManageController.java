@@ -50,6 +50,9 @@ public class EventManageController {
         if(TotalDiscount.isTotalDiscountZero(totalDiscount)) {
             outputView.printNone();
         }
+
+        int TotalDiscountPrice = totalPrice - totalDiscount + FREE_GIFT_DISCOUNT;
+        outputView.printTotalDiscountPrice(TotalDiscountPrice);
     }
 
     private Date getDate() {
