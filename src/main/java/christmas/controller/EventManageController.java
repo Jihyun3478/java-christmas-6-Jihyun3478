@@ -27,7 +27,6 @@ public class EventManageController {
 
         int totalDiscount = printTotalDiscount();
         printTotalDiscountPrice(totalPrice, totalDiscount);
-
         printBadge(totalDiscount);
     }
 
