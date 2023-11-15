@@ -93,4 +93,4 @@
    - 해당하지 않는 경우는 "없음"을 출력한다.
 
 # 💡 클래스 다이어그램
-![Class_Diagram.png](..%2F..%2F..%2FClass_Diagram.png)
+<img src="https://velog.velcdn.com/images/ljh3478/post/78e0e301-8da6-4e43-ac6d-c0118e6ca453/image.png">
