@@ -7,7 +7,7 @@ import static christmas.view.constant.NumberConstant.DEFAULT_CHRISTMAS_DISCOUNT;
 
 public class SpecialEvent {
     private final int discount;
-    private final List<Integer> star = Arrays.asList(3, 10, 17, 24, 25, 31);
+    private static final List<Integer> star = Arrays.asList(3, 10, 17, 24, 25, 31);
 
     public SpecialEvent(Date date) {
         this.discount = applySpecialEvent(date);
