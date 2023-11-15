@@ -20,7 +20,7 @@ class SpecialEventTest {
 
     @ParameterizedTest
     @ValueSource(ints = {1, 2, 4, 5, 6, 7})
-    @DisplayName("특별 할인이 적용이 안되는지 확인한다.")
+    @DisplayName("특별 할인이 적용되지않는지 확인한다.")
     void checkNotSpecialDiscount(int date) {
         Date theDate = new Date(date);
         SpecialEvent specialEvent = new SpecialEvent(theDate);
