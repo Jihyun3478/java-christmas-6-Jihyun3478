@@ -5,7 +5,7 @@ import camp.nextstep.edu.missionutils.Console;
 import java.util.HashMap;
 import java.util.Map;
 
-import static christmas.view.constant.Constant.*;
+import static christmas.view.constant.OutputConstant.*;
 import static christmas.view.constant.InputMessage.INPUT_DATE_MESSAGE;
 import static christmas.view.constant.InputMessage.INPUT_MENU_AND_COUNT_MESSAGE;
 

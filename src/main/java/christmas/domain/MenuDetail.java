@@ -32,6 +32,10 @@ public enum MenuDetail {
         return name;
     }
 
+    public static int getPrice(String input) {
+        return totalPrice(input).price;
+    }
+
     public static boolean isContain(String input) {
         return Arrays.stream(values())
                 .anyMatch(m -> Objects.equals(m.getName(), input));
@@ -41,9 +45,5 @@ public enum MenuDetail {
         return Arrays.stream(values())
                 .filter(m -> Objects.equals(m.getName(), input)).findAny().orElse(EMPTY);
 
-    }
-
-    public static int getPrice(String input) {
-        return totalPrice(input).price;
     }
 }

@@ -9,8 +9,8 @@ public enum Menu {
     BEVERAGE("음료", Arrays.asList(MenuDetail.DIET_COKE, MenuDetail.RED_WINE, MenuDetail.CHAMPAGNE)),
     EMPTY("없음", Collections.EMPTY_LIST);
 
-    private String type;
-    private List<MenuDetail> menu;
+    private final String type;
+    private final List<MenuDetail> menu;
 
     Menu(String type, List<MenuDetail> menu) {
         this.type = type;
@@ -36,7 +36,7 @@ public enum Menu {
         return isAppetizer(menu) || isMainMenu(menu) || isDessert(menu);
     }
 
-    public static boolean isContainFood(Map<String, Integer> input) {
+    private static boolean isContainFood(Map<String, Integer> input) {
         boolean isContain = false;
         for(String menu : input.keySet()) {
             if (isFood(menu)) {

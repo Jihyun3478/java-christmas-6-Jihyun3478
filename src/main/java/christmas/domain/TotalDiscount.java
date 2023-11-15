@@ -1,6 +1,6 @@
 package christmas.domain;
 
-import static christmas.view.constant.Constant.EVENT_CONDITION;
+import static christmas.view.constant.NumberConstant.EVENT_CONDITION;
 
 public class TotalDiscount {
     private static int discount;
@@ -17,7 +17,7 @@ public class TotalDiscount {
         return totalPrice >= EVENT_CONDITION;
     }
 
-    public int calculateTotalDiscount(ChristmasEvent christmasEvent, DayEvent dayEvent, SpecialEvent specialEvent, FreeGiftEvent freeGiftEvent, int totalPrice) {
+    private int calculateTotalDiscount(ChristmasEvent christmasEvent, DayEvent dayEvent, SpecialEvent specialEvent, FreeGiftEvent freeGiftEvent, int totalPrice) {
         return christmasEvent.getDiscount() + dayEvent.getDiscount() + specialEvent.getDiscount() + freeGiftEvent.getDiscount(totalPrice);
     }
 }

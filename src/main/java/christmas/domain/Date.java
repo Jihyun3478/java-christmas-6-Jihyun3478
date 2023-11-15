@@ -1,7 +1,6 @@
 package christmas.domain;
 
-import static christmas.view.constant.Constant.MAX_NUMBER;
-import static christmas.view.constant.Constant.MIN_NUMBER;
+import static christmas.view.constant.NumberConstant.*;
 
 public class Date {
     private final int date;
@@ -11,21 +10,21 @@ public class Date {
         checkInputRange(date);
     }
 
+    public int getDate() {
+        return date;
+    }
+
     private void checkInputRange(int input) {
-        if(!(input >= MIN_NUMBER && input <= MAX_NUMBER)) {
+        if(!(input >= MIN_DATE && input <= MAX_DATE)) {
             throw new IllegalArgumentException();
         }
     }
 
     public boolean isChristmasPeriod() {
-        return this.date <= 25;
+        return this.date <= CHRISTMAS_PERIOD;
     }
 
     public boolean isWeekend() {
-        return this.date % 7 == 1 || this.date % 7 == 2;
-    }
-
-    public int getDate() {
-        return date;
+        return this.date % WEEK_NUMBER == WEEK_DIVIDE1 || this.date % WEEK_NUMBER == WEEK_DIVIDE2;
     }
 }

@@ -4,22 +4,24 @@ import christmas.domain.Date;
 
 import java.text.DecimalFormat;
 
-import static christmas.view.constant.Constant.WON;
+import static christmas.view.constant.OutputConstant.MONEY_FORMAT;
+import static christmas.view.constant.OutputConstant.WON;
 import static christmas.view.constant.ErrorMessage.DATE_FORMAT_ERROR_MESSAGE;
 import static christmas.view.constant.ErrorMessage.MENU_FORMAT_ERROR_MESSAGE;
 import static christmas.view.constant.OutputMessage.*;
 
 public class OutputView {
 
-    DecimalFormat moneyFormat = new DecimalFormat("###,###");
+    DecimalFormat moneyFormat = new DecimalFormat(MONEY_FORMAT);
+
     public void printIntroduce() {
         System.out.println(INTRODUCE_MESSAGE.getMessage());
     }
 
-    public void printOrderMenu(String[] order) {
+    public void printOrderMenu(String[] orders) {
         System.out.println(MENU_CHECK_MESSAGE.getMessage());
-        for (String o : order) {
-            System.out.println(o);
+        for (String order : orders) {
+            System.out.println(order);
         }
     }
 

@@ -2,7 +2,7 @@ package christmas.domain;
 
 import java.util.Map;
 
-import static christmas.view.constant.Constant.DAY_DISCOUNT;
+import static christmas.view.constant.NumberConstant.DAY_DISCOUNT;
 
 public class DayEvent {
     private final int discount;

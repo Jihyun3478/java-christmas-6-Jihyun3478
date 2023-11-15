@@ -1,5 +1,8 @@
 package christmas.domain;
 
+import static christmas.view.constant.NumberConstant.*;
+import static christmas.view.constant.OutputConstant.*;
+
 public class Badge {
 
     private final String badge;
@@ -9,16 +12,16 @@ public class Badge {
     }
 
     public String giveBadge(int totalDiscount) {
-        String badge = "없음";
+        String badge = NONE;
 
-        if(totalDiscount >= 5000) {
-            badge = "별";
+        if(totalDiscount >= BADGE_STAR_CONDITION) {
+            badge = BADGE_STAR;
         }
-        if(totalDiscount >= 10000) {
-            badge = "트리";
+        if(totalDiscount >= BADGE_TREE_CONDITION) {
+            badge = BADGE_TREE;
         }
-        if(totalDiscount >= 20000) {
-            badge = "산타";
+        if(totalDiscount >= BADGE_SANTA_CONDITION) {
+            badge = BADGE_SANTA;
         }
         return badge;
     }

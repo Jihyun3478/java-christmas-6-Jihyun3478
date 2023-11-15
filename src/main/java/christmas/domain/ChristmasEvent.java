@@ -1,6 +1,6 @@
 package christmas.domain;
 
-import static christmas.view.constant.Constant.*;
+import static christmas.view.constant.NumberConstant.*;
 
 public class ChristmasEvent {
     private final int discount;
@@ -24,7 +24,7 @@ public class ChristmasEvent {
     private int calculateChristmasDiscount(Date date) {
         int discount = DEFAULT_DISCOUNT;
         int theDate = date.getDate();
-        for(int i = MIN_NUMBER+1; i <= theDate; i++) {
+        for(int i = MIN_DATE+1; i <= theDate; i++) {
             discount += CHRISTMAS_DISCOUNT;
         }
         return discount;

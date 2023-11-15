@@ -3,7 +3,7 @@ package christmas.domain;
 import java.util.Arrays;
 import java.util.List;
 
-import static christmas.view.constant.Constant.DEFAULT_DISCOUNT;
+import static christmas.view.constant.NumberConstant.DEFAULT_DISCOUNT;
 
 public class SpecialEvent {
     private final int discount;

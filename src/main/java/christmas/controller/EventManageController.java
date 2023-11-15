@@ -18,26 +18,17 @@ public class EventManageController {
         Date date = getDate();
         OrderMenu orderMenu = getOrderMenu();
         printOrderMenu(orderMenu);
+
         int totalPrice = printTotalPrice(orderMenu);
         printFreeGift(totalPrice);
 
         outputView.printEventDetail();
-        if(TotalDiscount.isEventCondition(totalPrice)) {
-            manageEvent(date, orderMenu, totalPrice);
-        }
+        getEventDetail(date, orderMenu, totalPrice);
 
-        if(!TotalDiscount.isEventCondition(totalPrice)) {
-            outputView.printNotExistEvent();
-        }
+        int totalDiscount = printTotalDiscount();
+        printTotalDiscountPrice(totalPrice, totalDiscount);
 
-        int totalDiscount = TotalDiscount.getDiscount();
-        outputView.printTotalDiscount(totalDiscount);
-
-        int totalDiscountPrice = FreeGiftEvent.getTotalDiscountPrice(totalPrice, totalDiscount);
-        outputView.printTotalDiscountPrice(totalDiscountPrice);
-
-        String badgeDetail = getBadge(totalDiscount);
-        outputView.printBadge(badgeDetail);
+        printBadge(totalDiscount);
     }
 
     private Date getDate() {
@@ -57,6 +48,17 @@ public class EventManageController {
             return getOrderMenu();
         }
     }
+
+    private void getEventDetail(Date date, OrderMenu orderMenu, int totalPrice) {
+        if(TotalDiscount.isEventCondition(totalPrice)) {
+            manageEvent(date, orderMenu, totalPrice);
+        }
+
+        if(!TotalDiscount.isEventCondition(totalPrice)) {
+            outputView.printNotExistEvent();
+        }
+    }
+
     private void manageEvent(Date date, OrderMenu orderMenu, int totalPrice) {
         ChristmasEvent christmasEvent = getChristmasEvent(date);
         DayEvent dayEvent = getDayEvent(date, orderMenu);
@@ -98,9 +100,8 @@ public class EventManageController {
         int count = freeGiftEvent.getDiscount(totalPrice);
         boolean isContainFreeGift = FreeGiftEvent.isContainFreeGift(totalPrice);
 
-        if(isContainFreeGift) {
-            outputView.printFreeGiftEvent(count, isContainFreeGift);
-        }
+        outputView.printFreeGiftEvent(count, isContainFreeGift);
+
         return freeGiftEvent;
     }
 
@@ -124,5 +125,21 @@ public class EventManageController {
     private void printFreeGift(int totalPrice) {
         boolean isContainFreeGift = FreeGiftEvent.isContainFreeGift(totalPrice);
         outputView.printFreeGift(isContainFreeGift);
+    }
+
+    private int printTotalDiscount() {
+        int totalDiscount = TotalDiscount.getDiscount();
+        outputView.printTotalDiscount(totalDiscount);
+        return totalDiscount;
+    }
+
+    private void printTotalDiscountPrice(int totalPrice, int totalDiscount) {
+        int totalDiscountPrice = FreeGiftEvent.getTotalDiscountPrice(totalPrice, totalDiscount);
+        outputView.printTotalDiscountPrice(totalDiscountPrice);
+    }
+
+    private void printBadge(int totalDiscount) {
+        String badgeDetail = getBadge(totalDiscount);
+        outputView.printBadge(badgeDetail);
     }
 }

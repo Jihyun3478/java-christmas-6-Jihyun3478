@@ -1,7 +1,7 @@
 package christmas.domain;
 
-import static christmas.view.constant.Constant.FREE_GIFT_CONDITION;
-import static christmas.view.constant.Constant.FREE_GIFT_DISCOUNT;
+import static christmas.view.constant.NumberConstant.FREE_GIFT_CONDITION;
+import static christmas.view.constant.NumberConstant.FREE_GIFT_DISCOUNT;
 
 public class FreeGiftEvent {
 
