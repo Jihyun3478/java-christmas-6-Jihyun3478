@@ -15,16 +15,16 @@ public class Date {
     }
 
     private void checkInputRange(int input) {
-        if(!(input >= MIN_DATE && input <= MAX_DATE)) {
+        if(!(input >= MIN_DATE_CONDITION && input <= MAX_DATE_CONDITION)) {
             throw new IllegalArgumentException();
         }
     }
 
     public boolean isChristmasPeriod() {
-        return this.date <= CHRISTMAS_PERIOD;
+        return this.date <= CHRISTMAS_DATE_CONDITION;
     }
 
     public boolean isWeekend() {
-        return this.date % WEEK_NUMBER == WEEK_DIVIDE1 || this.date % WEEK_NUMBER == WEEK_DIVIDE2;
+        return this.date % WEEK == WEEKEND_DIVIDE_CONDITION1 || this.date % WEEK == WEEKEND_DIVIDE_CONDITION2;
     }
 }

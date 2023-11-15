@@ -3,7 +3,7 @@ package christmas.domain;
 import java.util.Arrays;
 import java.util.List;
 
-import static christmas.view.constant.NumberConstant.DEFAULT_DISCOUNT;
+import static christmas.view.constant.NumberConstant.DEFAULT_CHRISTMAS_DISCOUNT;
 
 public class SpecialEvent {
     private final int discount;
@@ -20,7 +20,7 @@ public class SpecialEvent {
     private int applySpecialEvent(Date date) {
         int discount = 0;
         if(star.contains(date.getDate())) {
-            discount = DEFAULT_DISCOUNT;
+            discount = DEFAULT_CHRISTMAS_DISCOUNT;
         }
         return discount;
     }
