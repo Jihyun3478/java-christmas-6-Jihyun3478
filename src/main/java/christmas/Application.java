@@ -1,7 +1,10 @@
 package christmas;
 
+import christmas.controller.EventManageController;
+
 public class Application {
     public static void main(String[] args) {
-        // TODO: 프로그램 구현
+        EventManageController eventManage = new EventManageController();
+        eventManage.startEventPlanner();
     }
 }
